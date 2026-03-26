@@ -1,0 +1,194 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700;800;900&display=swap");
+@import "tailwindcss";
+
+@theme {
+  /* Sand / Warm Neutrals */
+  --color-sand-50:  #FAF8F4;
+  --color-sand-100: #F5F0E8;
+  --color-sand-200: #EDE7DB;
+  --color-sand-300: #DDD4C2;
+  --color-sand-400: #C7B8A1;
+  --color-sand-500: #A89880;
+
+  /* Stone / Text */
+  --color-stone-950: #111110;
+  --color-stone-900: #1A1A19;
+  --color-stone-800: #2E2E2C;
+  --color-stone-700: #3D3D3A;
+  --color-stone-600: #555550;
+  --color-stone-500: #737370;
+  --color-stone-400: #9C9C98;
+  --color-stone-300: #C4C4C0;
+  --color-stone-200: #E0DFD8;
+  --color-stone-100: #F0EFE8;
+
+  /* Clay — Primary Accent */
+  --color-clay-50:  #FBF2EC;
+  --color-clay-100: #F3DFD0;
+  --color-clay-200: #E5C0A4;
+  --color-clay-300: #CF9B76;
+  --color-clay-400: #BA7852;
+  --color-clay-500: #A15C38;
+  --color-clay-600: #8A4D2E;
+  --color-clay-700: #703E25;
+
+  /* Gold — Secondary Accent */
+  --color-gold-50:  #FDF7E9;
+  --color-gold-100: #FAECC8;
+  --color-gold-200: #F4D98E;
+  --color-gold-400: #DFB060;
+  --color-gold-500: #D8A24A;
+  --color-gold-600: #C08A35;
+
+  /* Calm Blue */
+  --color-blue-300: #A8BFD4;
+  --color-blue-400: #8BA8C0;
+  --color-blue-500: #6888A5;
+  --color-blue-600: #52718F;
+  --color-blue-900: #1C2A3A;
+
+  /* Teal */
+  --color-teal-400: #40ADAA;
+  --color-teal-500: #2D8C8A;
+  --color-teal-600: #226E6C;
+
+  /* Typography */
+  --font-sans:     "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-heading:  "Montserrat", ui-sans-serif, system-ui, sans-serif;
+
+  /* Spacing */
+  --spacing-section: 6rem;
+  --spacing-section-sm: 4rem;
+
+  /* Radius */
+  --radius-card: 1.25rem;
+  --radius-btn:  0.75rem;
+
+  /* Shadows — warm-tinted */
+  --shadow-sm:   0 1px 3px 0 rgb(161 92 56 / 0.06);
+  --shadow-card: 0 4px 24px -2px rgb(44 30 20 / 0.08), 0 1px 4px -1px rgb(44 30 20 / 0.04);
+  --shadow-card-hover: 0 12px 40px -4px rgb(161 92 56 / 0.14), 0 4px 12px -2px rgb(44 30 20 / 0.08);
+  --shadow-glass: 0 8px 32px -4px rgb(44 30 20 / 0.10);
+}
+
+/* ── Base ───────────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-sand-200);
+  color: var(--color-stone-800);
+  line-height: 1.72;
+}
+
+::selection {
+  background: var(--color-clay-100);
+  color: var(--color-clay-600);
+}
+
+/* ── Scrollbar ──────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--color-sand-100); }
+::-webkit-scrollbar-thumb { background: var(--color-sand-400); border-radius: 99px; }
+
+/* ── Layout utilities ───────────────────────────────────────────────────────── */
+.section-padding {
+  padding-top: var(--spacing-section);
+  padding-bottom: var(--spacing-section);
+}
+.section-padding-sm {
+  padding-top: var(--spacing-section-sm);
+  padding-bottom: var(--spacing-section-sm);
+}
+
+.container-wide {
+  width: 100%;
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.container-narrow {
+  width: 100%;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* ── Typography helpers ─────────────────────────────────────────────────────── */
+.font-heading { font-family: var(--font-heading); }
+
+.display-heading {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-clay-500);
+}
+
+/* ── Gradient text ──────────────────────────────────────────────────────────── */
+.gradient-text-clay {
+  background: linear-gradient(135deg, #A15C38 0%, #D8A24A 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ── Backgrounds ────────────────────────────────────────────────────────────── */
+/* bg-hero renamed to hero-bg — Tailwind v4 intercepts any bg-* class */
+.hero-bg {
+  background: linear-gradient(155deg, #1C2A3A 0%, #2E2E2C 45%, #3D3020 100%) !important;
+}
+
+.bg-warm {
+  background: var(--color-sand-100);
+}
+
+.bg-clay-subtle {
+  background: linear-gradient(135deg, #FAF7F4 0%, #F5EDE0 100%);
+}
+
+/* ── Glass card ─────────────────────────────────────────────────────────────── */
+.glass-card {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: var(--shadow-glass);
+}
+
+/* ── Card hover lift ────────────────────────────────────────────────────────── */
+.card-lift {
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+/* ── Marquee (credential ticker) ────────────────────────────────────────────── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
